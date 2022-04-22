@@ -1,13 +1,19 @@
+const User = require("./../models/user");
+
 class UserView {
-  static createUser(payload) {
-    return new UserView(payload);
+  static create(id, username, name) {
+    return new User(id, username, name);
   }
 
   get error() {
-    if (this.payload == null) {
-      return "payload no existe";
+    if (this.username == null || this.name == null || this.id == null) {
+      return "necesitan tener un valor valido";
     }
-    return this.payload;
+    return "todo bien";
+  }
+
+  static getInfo(result) {
+    return [result.id, result.username, result.name];
   }
 }
 
